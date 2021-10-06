@@ -1,8 +1,3 @@
-import water
-
-if __name__ == "__main__":
-    water.auto_water()
-
 from flask import Flask, render_template, redirect, url_for
 import psutil
 import datetime
