@@ -37,6 +37,7 @@ def auto_water(delay = 5, pump_pin = 7, water_sensor_pin = 8):
                 consecutive_water_count += 1
             else:
                 consecutive_water_count = 0
+                
     # Kilépés Ctrl+C-re, GPI felszabadítással
     except KeyboardInterrupt: 
         GPIO.cleanup() 
