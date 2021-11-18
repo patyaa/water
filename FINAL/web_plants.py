@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 import psutil
 import datetime
 import water
@@ -44,6 +44,15 @@ def action2():
     templateData = template(text = "Watered Once")
     return render_template('main.html', **templateData)
 
+@app.route('/', methods=['POST'])
+def input():
+    tank = request.form["tank"]
+    templateData = template(text = tank + "liter")
+    f = open("tankCapacity.txt", "w")
+    f.write(tank)
+    f.close()
+    return render_template('main.html', **templateData)
+
 @app.route("/auto/water/<toggle>")
 def auto_water(toggle):
     running = False
@@ -57,7 +66,7 @@ def auto_water(toggle):
             except:
                 pass
         if not running:
-            os.system("python3.4 auto_water.py&")
+            os.system("python3 auto_water.py&")
     else:
         templateData = template(text = "Auto Watering Off")
         os.system("pkill -f water.py")
@@ -66,3 +75,4 @@ def auto_water(toggle):
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, debug=True)
+

@@ -27,10 +27,10 @@ def init_output(pin):
     GPIO.output(pin, GPIO.LOW)
     GPIO.output(pin, GPIO.HIGH)
     
-def auto_water(delay = 2, pump_pin = 7, water_sensor_pin = 8):
+def auto_water(tank, delay = 2, pump_pin = 7, water_sensor_pin = 8):
     consecutive_water_count = 0
     #Felhasználó edényének kapacitás bekérése 
-    tank = float(input("Tank capacity (LITER): "))
+   # tank = float(input("Tank capacity (LITER): "))
     waterPerPulse = 25 # 1 löket 25ml vízet nyom
     
     pulse = tank * 1000 / waterPerPulse * 0.75 #Max löketszám (tartály 75%-a)
