@@ -4,15 +4,15 @@
 </head>
 
 <body>
-  <h1>PLANT HELPLINE</h1>
-  <h2>The date and time on the server is: {{ time }}</h2>
+  <h1>Öntöző kezelőfelület</h1>
+  <h2>A szerver pontos ideje: {{ time }}</h2>
   <h2> {{ text }} </h2>  
-  <a href="/auto/water/ON"><button>Turn ON Auto Watering</button></a>
-  <a href="/auto/water/OFF"><button>Turn OFF Auto Watering</button></a>
-  <a href="/sensor"><button>Check Soil Status</button></a> <br>
-  <a href="/water"><button>Water Once</button></a>
-  <a href="/last_watered"><button>Check Time Last Watered</button></a>
-  <h1>Adja meg a litert</h1>
+  <a href="/auto/water/ON"><button>Automata öntözés bekapcsolása</button></a>
+  <a href="/auto/water/OFF"><button>Automata öntözés kikapcsolása</button></a>
+  <a href="/sensor"><button>Nedvesség ellenőrzése</button></a> <br>
+  <a href="/water"><button>Egyszeri öntözés</button></a>
+  <a href="/last_watered"><button>Legutolsó öntözés idöpontja</button></a>
+  <h1>Kérjük adja meg az edénybe töltött vízmennyiséget literben</h1>
     <form method = "POST">
       <input name = "tank">
       <input type = "submit">
