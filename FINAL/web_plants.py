@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 
-def template(title = "Locsolo", text = ""):
+def template(title = "Locsolo!", text = ""):
     now = datetime.datetime.now()
     timeString = now
     templateDate = {
