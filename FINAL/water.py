@@ -38,7 +38,7 @@ def auto_water(tank, delay = 2, pump_pin = 7, water_sensor_pin = 8):
     consecutiveMax = 0 #Felhasznált löketek száma
     
     init_output(pump_pin)
-    print("Fut! CTRL+Z szukseges a kilepeshez")
+    print("Fut! CTRL+Z megnyomasa a kilepeshez")
     try:
         while  consecutive_water_count < pulse and consecutiveMax < pulse:
             time.sleep(delay)
