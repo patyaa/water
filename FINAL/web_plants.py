@@ -31,9 +31,9 @@ def action():
     status = water.get_status()
     message = ""
     if (status == 1):
-        message = "Water me please!"
+        message = "Kell locsolni!"
     else:
-        message = "I'm a happy plant"
+        message = "Nem kell locsolni!"
 
     templateData = template(text = message)
     return render_template('main.html', **templateData)
@@ -41,13 +41,13 @@ def action():
 @app.route("/water")
 def action2():
     water.pump_on()
-    templateData = template(text = "Watered Once")
+    templateData = template(text = "Meglocsolva egyszer")
     return render_template('main.html', **templateData)
 
 @app.route('/', methods=['POST'])
 def input():
     tank = request.form["tank"]
-    templateData = template(text = tank + "liter")
+    templateData = template(text = tank + " liter")
     f = open("tankCapacity.txt", "w")
     f.write(tank)
     f.close()
@@ -57,18 +57,18 @@ def input():
 def auto_water(toggle):
     running = False
     if toggle == "ON":
-        templateData = template(text = "Auto Watering On")
+        templateData = template(text = "Automata locsolas bekapcsolva")
         for process in psutil.process_iter():
             try:
                 if process.cmdline()[1] == 'auto_water.py':
-                    templateData = template(text = "Already running")
+                    templateData = template(text = "Automata locsolas mar fut")
                     running = True
             except:
                 pass
         if not running:
             os.system("python3 auto_water.py&")
     else:
-        templateData = template(text = "Auto Watering Off")
+        templateData = template(text = "Automata locsolas kikapcsolva")
         os.system("pkill -f water.py")
 
     return render_template('main.html', **templateData)
