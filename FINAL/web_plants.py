@@ -61,7 +61,7 @@ def auto_water(toggle):
         for process in psutil.process_iter():
             try:
                 if process.cmdline()[1] == 'auto_water.py':
-                    templateData = template(text = "Az automata locsolas mar fut")
+                    templateData = template(text = "Az automata locsolas jelenleg fut")
                     running = True
             except:
                 pass
