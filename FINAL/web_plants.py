@@ -17,7 +17,7 @@ def template(title = "Locsolo", text = ""):
     return templateDate
 
 @app.route("/")
-def Locsolo():
+def waterer():
     templateData = template()
     return render_template('main.html', **templateData)
 
