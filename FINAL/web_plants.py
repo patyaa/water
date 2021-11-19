@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 
-def template(title = "HELLO!", text = ""):
+def template(title = "Locsolo", text = ""):
     now = datetime.datetime.now()
     timeString = now
     templateDate = {
@@ -17,7 +17,7 @@ def template(title = "HELLO!", text = ""):
     return templateDate
 
 @app.route("/")
-def hello():
+def Locsolo():
     templateData = template()
     return render_template('main.html', **templateData)
 
@@ -61,7 +61,7 @@ def auto_water(toggle):
         for process in psutil.process_iter():
             try:
                 if process.cmdline()[1] == 'auto_water.py':
-                    templateData = template(text = "Automata locsolas mar fut")
+                    templateData = template(text = "Az automata locsolas mar fut")
                     running = True
             except:
                 pass
