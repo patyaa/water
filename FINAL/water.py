@@ -14,7 +14,7 @@ def get_last_watered():
         f = open("last_watered.txt", "r")
         return f.readline()
     except:
-        return "NEVER!"
+        return "Soha!"
 
 #Szenzor lekérdezése
 def get_status(pin = 8):
@@ -33,14 +33,16 @@ def auto_water(tank, delay = 2, pump_pin = 7, water_sensor_pin = 8):
    # tank = float(input("Tank capacity (LITER): "))
     waterPerPulse = 25 # 1 löket 25ml vízet nyom
     
-    pulse = tank * 1000 / waterPerPulse * 0.75 #Max löketszám (tartály 75%-a)
+    pulse = tank * 1000 / waterPerPulse * 0.75 #Max löketszám víz elfogyása ellen (tartály 75%-a)
+    
+    overWaterPrev = tank * 1000 / waterPerPulse * 0.50 #Max löket túlöntözés ellen (tartály 50%-a)
     
     consecutiveMax = 0 #Felhasznált löketek száma
     
     init_output(pump_pin)
     print("Fut! CTRL+Z megnyomasa a kilepeshez")
     try:
-        while  consecutive_water_count < pulse and consecutiveMax < pulse:
+        while  consecutive_water_count < overWaterPrev and consecutiveMax < pulse:
             time.sleep(delay)
             wet = get_status(pin = water_sensor_pin) == 0
             if not wet:
